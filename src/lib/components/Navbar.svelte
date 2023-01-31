@@ -9,7 +9,7 @@
       {#if $page.data.session}
         <li><a id="plus" role="button" href="/new" class=""><Users /></a></li>
       {/if}
-      <li><strong><a href="/">Seta</a></strong></li>
+      <li><strong><a href="/">seta</a></strong></li>
     </ul>
     <ul>
       <li>
