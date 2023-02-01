@@ -33,6 +33,7 @@ export const actions = {
     
         const email = formData.get('email')
         const password = formData.get('password')
+        const afterID = formData.get('afterID')
     
         const { error } = await supabaseClient.auth.signInWithPassword({
           email,
@@ -55,6 +56,9 @@ export const actions = {
             },
           })
         }
+        if(!error && afterID != 0){
+          throw redirect(303, '/invite?id=' + afterID)
+        }
     }
 }
 
@@ -75,6 +79,14 @@ export const load = async (event) => {
     return {
       username,
       groups
+    }
+  }else{
+    if(event.url.searchParams.get('after') == 'invite'){
+      return {
+        afterID: event.url.searchParams.get('id')
+      }
+    }else{
+      return { afterID: 0 }
     }
   }
 }

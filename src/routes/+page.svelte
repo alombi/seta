@@ -3,7 +3,7 @@
     import { AlertTriangle } from 'lucide-svelte'
     export let form
     export let data
-    $: ({ username, groups } = data);
+    $: ({ username, groups, afterID } = data);
     
 </script>
 
@@ -43,7 +43,7 @@
                 Password
                 <input type="password" id="password" name="password" placeholder="Password" required>
             </label>
-
+            <input type="text" id="afterID" name="afterID" value={afterID} style="display:none;">
         </div>
         <button type="submit">Entra</button>
         <p><small>Non hai un account? <a href="/signup">Creane uno qui</a></small></p>

@@ -13,9 +13,14 @@ export async function load(event){
         error: 'Nessun gruppo trovato'
     });
     let users = []
+    let ids = []
     for(const user of data[0].partecipanti){
         var { data:data2, error:error2 } = await supabaseClient.from('profiles').select('username').eq('id', user);
         users.push({username: data2[0].username, id: user})
+        ids.push(user)
+    }
+    if(!ids.includes(session.user.id)){
+        throw redirect(303, '/');
     }
 
     return {

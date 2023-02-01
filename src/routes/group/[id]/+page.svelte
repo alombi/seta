@@ -1,5 +1,5 @@
 <script>
-    import { Settings, Plus } from 'lucide-svelte';
+    import { Settings, Plus, X } from 'lucide-svelte';
     import { page } from '$app/stores';
     import BookList from '$lib/components/BookList.svelte';
     export let data;
@@ -28,7 +28,15 @@
 
 <dialog>
     <article>
-      <h3>Impostazioni</h3>
+      <div class="titleflex">
+        <h3>Impostazioni</h3>
+        <a class="secondary" on:click={closeSettings} href="#cancel"><X /></a>
+      </div>
+      <article>
+        <p>Link d'invito: <kbd>https://seta.alombi.xyz/invite?id={group.id}</kbd></p>
+        <p>ID del gruppo <kbd>{group.id}</kbd></p>
+      </article>
+      <hr>
       <p>Nel gruppo {group.nome} ci sono {group.partecipanti.length} partecipanti:</p>
       <div class="users">
         {#each users as user}
@@ -55,7 +63,7 @@
         align-items: center;
         margin-bottom: 20px;
     }
-    .titleflex > h1{
+    .titleflex > h1, .titleflex > h3 {
         margin-bottom: unset;
     }
     .users{
