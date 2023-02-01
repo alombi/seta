@@ -36,7 +36,7 @@
         {/each}   
       </div>
       <footer>
-        <a role="button" href="#" class="error">Esci dal gruppo</a>
+        <a role="button" href={"/group/" + group.id + '/quit?id=' + group.id} class="error">Esci dal gruppo</a>
         <a on:click={closeSettings} href="#cancel" role="button" class="secondary">Chiudi</a>
       </footer>
     </article>

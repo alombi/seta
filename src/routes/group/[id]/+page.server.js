@@ -8,7 +8,7 @@ export async function load(event){
     if (!session) {
         throw redirect(303, '/');
     }
-    const { data, error } = await supabaseClient.from('seta').select('libri, partecipanti, nome').eq('id', id);
+    const { data, error } = await supabaseClient.from('seta').select('libri, partecipanti, nome, id').eq('id', id);
     if(error) return fail(404, {
         error: 'Nessun gruppo trovato'
     });
