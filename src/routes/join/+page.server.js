@@ -10,22 +10,26 @@ export const load = async (event) => {
 }
 
 export const actions = {
-	create: async (event) => {
+	join: async (event) => {
 		const { session, supabaseClient } = await getSupabase(event);
 		const { request, url } = event;
 		const formData = await request.formData();
-		const nome = formData.get('nome');
-
-		if(!nome) return fail(400, {
-			error: 'Inserisci un nome valido'
+		const id = formData.get('id');
+		
+		if(!id) return fail(400, {
+			error: 'Inserisci un ID valido'
 		});
 
 		const userID = session.user.id;
-		const { data, error } = await supabaseClient.from('seta').insert({partecipanti: [userID], nome: nome}).select();
-		if(error) return fail(500, {
+
+		const { data, error } = await supabaseClient.from('seta').select('partecipanti').eq('id', id);
+		let partecipanti = data[0].partecipanti
+		partecipanti.push(userID)
+		const { data: data2, error: error2 } = await supabaseClient.from('seta').update({partecipanti: partecipanti}).eq('id', id);
+		if(error2) return fail(500, {
 			error: 'Errore nel server. Riprova più tardi'
 		});
 
-		throw redirect(303, '/group/' + data[0].id);
-	}
+		throw redirect(303, '/group/' + id);
+	},
 }

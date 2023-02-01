@@ -23,6 +23,7 @@
         <form method="post" action="?/join">
             <input type="text" id="id" name="id" placeholder="ID del gruppo" required>
             <button class="contrast" type="submit">Entra</button>
+            <small>Oppure <a href="/new">creane uno</a></small>
         </form>
     </div>
     {/if}

@@ -1,5 +1,5 @@
 <script>
-    import { Users } from 'lucide-svelte';
+    import { Plus } from 'lucide-svelte';
     import { page } from '$app/stores'
 
 </script>
@@ -7,7 +7,7 @@
 <nav>
     <ul>
       {#if $page.data.session}
-        <li><a id="plus" role="button" href="/new" class=""><Users /></a></li>
+        <li><a id="plus" role="button" href="/new" class=""><Plus /></a></li>
       {/if}
       <li><strong><a href="/">seta</a></strong></li>
     </ul>
