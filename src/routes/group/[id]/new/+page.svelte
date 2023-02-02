@@ -26,6 +26,9 @@
             <input type="text" name="titolo" id="titolo" placeholder="Titolo" required>
             <input type="text" name="autore" id="autore" placeholder="Autore" required>
         </div>
+        <label for="note">
+            <textarea name="note" id="note" cols="30" rows="4" placeholder="Annotazioni, note"></textarea>
+        </label>
         <input type="link" name="link" id="link" placeholder="Link al libro" required>
     
         <!-- <button id="continua" on:click={continueForm}>Continua</button> -->

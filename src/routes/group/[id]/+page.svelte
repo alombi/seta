@@ -6,11 +6,11 @@
     $: ({ group, users } = data);
 
     function openSettings(){
-        const dialog = document.querySelector('dialog');
+        const dialog = document.querySelector('#impostazioni');
         dialog.setAttribute("open", "true")
     }
     function closeSettings(){
-        const dialog = document.querySelector('dialog');
+        const dialog = document.querySelector('#impostazioni');
         dialog.removeAttribute("open")
     }
 </script>
@@ -22,16 +22,21 @@
         <a on:click={openSettings} class="secondary" href="#"><Settings /></a>
     </div>
 </div>
-<BookList books={group.libri} />
+{#if group.libri.length > 0}
+    {#each group.libri as book}
+        <BookList book={book} />
+    {/each}
+{:else}
+    <p class="not_found">Sembra non ci sia ancora nessun libro!</p>
+{/if}
 
 
-
-<dialog>
+<dialog id="impostazioni">
     <article>
-      <div class="titleflex">
-        <h3>Impostazioni</h3>
-        <a class="secondary" on:click={closeSettings} href="#cancel"><X /></a>
-      </div>
+      <header>
+        Impostazioni
+        <a on:click={closeSettings} href="#close" aria-label="Close" class="close"></a>
+      </header>
       <article>
         <p>Link d'invito: <kbd>https://seta.alombi.xyz/invite?id={group.id}</kbd></p>
         <p>ID del gruppo <kbd>{group.id}</kbd></p>

@@ -22,14 +22,17 @@ export const actions = {
         const title = formData.get('titolo');
         const author = formData.get('autore');
         const link = formData.get('link');
+        const note = formData.get('note');
 
 		const { data, error } = await supabaseClient.from('seta').select('libri').eq('id', id);
         let books = data[0].libri
-        books.push({title: title, author: author, link: link, username: username})
+        let booksCount = books.length
+        const bookID = booksCount + 1
+        books.push({title: title, author: author, link: link, username: username, note: note, bookID: bookID})
         const { data: data2, error: error2 } = await supabaseClient.from('seta').update({libri: books}).eq('id', id);
 
         if(error2) return fail(500, {
-			error: 'Errore nel server. Riprova più tardi'
+            error: 'Errore nel server. Riprova più tardi'
 		});
 
 		throw redirect(303, '/group/' + id);
