@@ -49,7 +49,6 @@
     .group{
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap;
     }
     .group:hover{
         opacity: 0.7;
