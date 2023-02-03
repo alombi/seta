@@ -22,6 +22,7 @@
 
 <main class="container">
     <Navbar />
+	<br>
     <slot></slot>
 	<Footer />
 </main>

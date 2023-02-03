@@ -22,7 +22,7 @@
         <small>{book.title}</small>
         <small id="author">{book.author}</small>
     </div>
-    <small><span id="usernameSPAN"><User size=18 /></span>{book.username}</small>
+    <small id="username"><span id="usernameSPAN"><User size=18 /></span>{book.username}</small>
 </div>
 </a>
 <hr>
