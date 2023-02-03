@@ -36,6 +36,8 @@
         <article>
             {book.note}
         </article>
+        {:else}
+        <br>
         {/if}
         <button on:click={()=>window.open(book.link, '_blank')}>Link al libro</button>
     </article>
