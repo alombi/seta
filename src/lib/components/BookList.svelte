@@ -1,5 +1,6 @@
 <script>
     import { X, User } from 'lucide-svelte'
+    import { space } from 'svelte/internal';
     export let book;
     function openDialog(){
         let selector = `#id${book.bookID}`
@@ -21,7 +22,7 @@
         <small>{book.title}</small>
         <small id="author">{book.author}</small>
     </div>
-    <small><User />{book.username}</small>
+    <small><span id="usernameSPAN"><User size=18 /></span>{book.username}</small>
 </div>
 </a>
 <hr>

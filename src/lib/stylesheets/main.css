@@ -14,6 +14,11 @@
   margin-bottom: 70px;
 }
 
+#usernameSPAN > svg {
+  margin-top: -6px;
+  margin-right: 2px;
+}
+
 /* Teal Light scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme=light],
