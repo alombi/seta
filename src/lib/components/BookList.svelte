@@ -1,5 +1,5 @@
 <script>
-    import { X } from 'lucide-svelte'
+    import { X, User } from 'lucide-svelte'
     export let book;
     function openDialog(){
         let selector = `#id${book.bookID}`
@@ -21,7 +21,7 @@
         <small>{book.title}</small>
         <small id="author">{book.author}</small>
     </div>
-    <small>Aggiunto da {book.username}</small>
+    <small><User />{book.username}</small>
 </div>
 </a>
 <hr>
@@ -49,6 +49,7 @@
     .group{
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
     .group:hover{
         opacity: 0.7;
