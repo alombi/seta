@@ -1,13 +1,18 @@
 <script>
-    import { Plus } from 'lucide-svelte';
+    import { Plus, ChevronLeft } from 'lucide-svelte';
     import { page } from '$app/stores'
+    import { navButton, navLink } from '$lib/stores';
 
 </script>
 
 <nav>
     <ul>
       {#if $page.data.session}
-        <li><a id="plus" role="button" href="/new" class=""><Plus /></a></li>
+      {#if $navButton == 'plus'}
+        <li><a id="plus" role="button" href={$navLink} class=""><Plus /></a></li>
+      {:else if $navButton == 'back'}
+        <li><a id="plus" role="button" href={$navLink} class=""><ChevronLeft /></a></li>
+      {/if}
       {/if}
       <li><strong><a href="/">seta</a></strong></li>
     </ul>

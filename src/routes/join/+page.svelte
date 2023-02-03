@@ -1,6 +1,9 @@
 <script>
     import { AlertTriangle } from 'lucide-svelte'
     export let form
+    import { navButton, navLink } from '$lib/stores';
+    $navButton = 'back'
+    $navLink = '/'
 </script>
 
 <h1>Unisciti ad un gruppo</h1>

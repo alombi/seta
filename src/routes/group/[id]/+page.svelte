@@ -4,6 +4,9 @@
     import BookList from '$lib/components/BookList.svelte';
     export let data;
     $: ({ group, users } = data);
+    import { navButton, navLink } from '$lib/stores';
+    $navButton = 'back'
+    $navLink = '/'
 
     function openSettings(){
         const dialog = document.querySelector('#impostazioni');

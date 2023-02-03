@@ -17,6 +17,10 @@
     //     }
     //     results = []
     // }
+    import { page } from '$app/stores'
+    import { navButton, navLink } from '$lib/stores';
+    $navButton = 'back'
+    $navLink = '/group/' + $page.params.id
 </script>
 
 <form method="post" action="?/add">

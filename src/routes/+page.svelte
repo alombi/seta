@@ -4,6 +4,9 @@
     export let form
     export let data
     $: ({ username, groups, afterID } = data);
+    import { navButton, navLink } from '$lib/stores';
+    navButton.set('plus');
+    navLink.set('/new');
     
 </script>
 
