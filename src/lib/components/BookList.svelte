@@ -17,7 +17,10 @@
 
 <a href="" on:click={()=>openDialog(book.id)}>
 <div class="group">
-    <small>{book.title} - {book.author}</small>
+    <div id="left">
+        <small>{book.title}</small>
+        <small id="author">{book.author}</small>
+    </div>
     <small>Aggiunto da {book.username}</small>
 </div>
 </a>
@@ -44,6 +47,7 @@
     .group{
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
     .group:hover{
         opacity: 0.7;
@@ -56,5 +60,12 @@
     }
     .titleflex > h3 {
         margin-bottom: unset;
+    }
+    #left{
+        display: flex;
+        flex-direction: column;
+    }
+    #left > #author{
+        font-size: 13px;
     }
 </style>
