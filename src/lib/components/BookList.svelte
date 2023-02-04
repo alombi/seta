@@ -30,7 +30,7 @@
     <article>
         <header>
             <a href="" aria-label="Close" class="close" on:click={closeDialog}></a>
-            {book.title}, di {book.author}
+            <b>{book.title}</b> di {book.author}
         </header>
         <p>Libro aggiunto da <mark>{book.username}</mark>.</p>
         {#if book.note}
