@@ -1,5 +1,5 @@
 <script>
-    import { Settings, Plus, X } from 'lucide-svelte';
+    import { Settings, Plus, X} from 'lucide-svelte';
     import { page } from '$app/stores';
     import BookList from '$lib/components/BookList.svelte';
     export let data;
@@ -60,6 +60,9 @@
 
 
 <style>
+    kbd::selection{
+        background-color: #00897b;  
+    }
     #plus {
         border-radius: 50%;
         padding: 0px;
