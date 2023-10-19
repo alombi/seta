@@ -27,22 +27,19 @@
         books = group.libri.reverse()
     })
 </script>
-
 <div class="titleflex">
     <h1>{group.nome}</h1>
     <div>
         <a id="plus" role="button" href={$page.url.pathname + '/new'} ><Plus /></a>
+        <a href="#" id="plus" on:click={changeOrder} role="button">
+            {#if recentFirst}<ArrowUpNarrowWide />
+            {:else}<ArrowDownNarrowWide />
+            {/if}
+        </a>
         <a on:click={openSettings} class="secondary" href="#"><Settings /></a>
     </div>
 </div>
-<div class="list-toolbar">
-    <span></span>
-    <a href="#" id="plus" on:click={changeOrder} role="button">
-        {#if recentFirst}<ArrowUpNarrowWide />
-        {:else}<ArrowDownNarrowWide />
-        {/if}
-    </a>
-</div>
+
 {#if group.libri.length > 0}
     {#each books as book}
         <BookList book={book} />
@@ -50,6 +47,7 @@
 {:else}
     <p class="not_found">Sembra non ci sia ancora nessun libro!</p>
 {/if}
+
 
 
 <dialog id="impostazioni">
@@ -78,12 +76,6 @@
 
 
 <style>
-    .list-toolbar{
-        display: flex;
-        justify-content: space-between;
-        align-items: left;
-        margin-bottom: 20px;
-    }
     kbd::selection{
         background-color: #00897b;  
     }
