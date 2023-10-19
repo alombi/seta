@@ -16,6 +16,6 @@
 	"type": "module",
 	"dependencies": {
 		"@supabase/auth-helpers-sveltekit": "^0.8.7",
-		"lucide-svelte": "^0.108.0"
+		"lucide-svelte": "^0.288.0"
 	}
 }

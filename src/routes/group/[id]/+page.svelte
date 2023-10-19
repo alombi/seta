@@ -1,10 +1,11 @@
 <script>
-    import { Settings, Plus, X} from 'lucide-svelte';
+    import { Settings, Plus, ArrowUpNarrowWide, ArrowDownNarrowWide } from 'lucide-svelte';
     import { page } from '$app/stores';
     import BookList from '$lib/components/BookList.svelte';
     export let data;
     $: ({ group, users } = data);
     import { navButton, navLink } from '$lib/stores';
+    import { onMount } from 'svelte';
     $navButton = 'back'
     $navLink = '/'
 
@@ -16,6 +17,15 @@
         const dialog = document.querySelector('#impostazioni');
         dialog.removeAttribute("open")
     }
+    let recentFirst = true, books = []
+
+    function changeOrder(){
+        books = books.reverse()
+        recentFirst = !recentFirst
+    }
+    onMount(()=>{
+        books = group.libri.reverse()
+    })
 </script>
 
 <div class="titleflex">
@@ -25,8 +35,16 @@
         <a on:click={openSettings} class="secondary" href="#"><Settings /></a>
     </div>
 </div>
+<div class="list-toolbar">
+    <span></span>
+    <a href="#" id="plus" on:click={changeOrder} role="button">
+        {#if recentFirst}<ArrowUpNarrowWide />
+        {:else}<ArrowDownNarrowWide />
+        {/if}
+    </a>
+</div>
 {#if group.libri.length > 0}
-    {#each group.libri as book}
+    {#each books as book}
         <BookList book={book} />
     {/each}
 {:else}
@@ -60,6 +78,12 @@
 
 
 <style>
+    .list-toolbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: left;
+        margin-bottom: 20px;
+    }
     kbd::selection{
         background-color: #00897b;  
     }
