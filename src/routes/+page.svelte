@@ -16,7 +16,7 @@
         {#each groups as group}
             <div class="group">
                 <a href="/group/{group.id}">{group.nome}</a>
-                <small>{group.partecipanti.length} partecipanti</small>
+                <small>{group.partecipanti.length} partecipant{#if group.partecipanti.length > 1}i{:else}e{/if}</small>
             </div>
             <hr>
         {/each}
