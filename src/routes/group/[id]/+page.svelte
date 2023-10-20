@@ -27,11 +27,20 @@
         books = group.libri.reverse()
     })
 </script>
+
+<div class="floating-buttons">
+    <a id="plus" role="button" href={$page.url.pathname + '/new'} ><Plus /></a>
+    <a href="#" id="plus" on:click={changeOrder} role="button">
+        {#if recentFirst}<ArrowUpNarrowWide />
+        {:else}<ArrowDownNarrowWide />
+        {/if}
+    </a>
+</div>
 <div class="titleflex">
     <h1>{group.nome}</h1>
-    <div>
-        <a id="plus" role="button" href={$page.url.pathname + '/new'} ><Plus /></a>
-        <a href="#" id="plus" on:click={changeOrder} role="button">
+    <div id="buttons">
+        <a id="plus" role="button" href={$page.url.pathname + '/new'} class="desktop" ><Plus /></a>
+        <a href="#" id="plus" on:click={changeOrder} role="button" class="desktop">
             {#if recentFirst}<ArrowUpNarrowWide />
             {:else}<ArrowDownNarrowWide />
             {/if}
@@ -76,6 +85,21 @@
 
 
 <style>
+    .floating-buttons{
+        display: none;
+    }
+    @media only screen and (max-width: 600px) {
+        .floating-buttons{
+            display:block;
+            position: absolute;
+            bottom:60px;
+            right:0;
+            z-index:4;
+        }
+        .desktop{
+            display: none;
+        }
+    }
     kbd::selection{
         background-color: #00897b;  
     }
