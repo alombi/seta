@@ -28,7 +28,7 @@ export const actions = {
         let books = data[0].libri
         let booksCount = books.length
         const bookID = booksCount + 1
-        books.push({title: title, author: author, link: link, username: username, note: note, bookID: bookID})
+        books.push({title: title, author: author, link: link, username: username, note: note, bookID: bookID, read: false})
         const { data: data2, error: error2 } = await supabaseClient.from('seta').update({libri: books}).eq('id', id);
 
         if(error2) return fail(500, {
