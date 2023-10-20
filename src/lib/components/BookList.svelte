@@ -45,7 +45,7 @@
     }
 </script>
 
-<a href="" on:click={()=>openDialog(book.id)} class:secondary={secondary != recentFirst}>
+<a href="" on:click={()=>openDialog(book.id)} class:secondary={secondary == recentFirst}>
 <div class="group">
     <div id="left">
         <small>{book.title}</small>
