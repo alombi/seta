@@ -51,7 +51,7 @@
 
 {#if group.libri.length > 0}
     {#each books as book}
-        <BookList book={book} />
+        <BookList recentFirst={recentFirst} book={book} />
     {/each}
 {:else}
     <p class="not_found">Sembra non ci sia ancora nessun libro!</p>

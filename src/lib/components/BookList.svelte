@@ -1,6 +1,6 @@
 <script>
     import { X, User, BookmarkCheck, BookmarkX } from 'lucide-svelte'
-    export let book;
+    export let book, recentFirst;
     import { supabaseClient } from '$lib/db'
     import {page} from '$app/stores'
     function openDialog(){
@@ -45,8 +45,7 @@
     }
 </script>
 
-
-<a href="" on:click={()=>openDialog(book.id)} class:secondary>
+<a href="" on:click={()=>openDialog(book.id)} class:secondary={secondary != recentFirst}>
 <div class="group">
     <div id="left">
         <small>{book.title}</small>
